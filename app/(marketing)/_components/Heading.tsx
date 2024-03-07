@@ -23,7 +23,7 @@ export const Heading = () => {
 
 
             <Button>
-                Entrer WebPad
+                Let's go
                 <ArrowRight className="h-4 w-4 ml-2"/>
             </Button>
         </div>
