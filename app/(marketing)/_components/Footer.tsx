@@ -1,6 +1,7 @@
 
 
 import {Logo} from "@/app/(marketing)/_components/logo";
+import {Button} from "@/components/ui/button";
 
 //classe affichant le logo sur le footer
 export const Footer = () =>{
@@ -13,9 +14,26 @@ export const Footer = () =>{
         bg-background
         z-50
      ">
-
          <Logo/>
 
+         <div className="
+            md:ml-auto
+            w-full
+            justify-between
+            md:justify-end
+            flex
+            items-center
+            gap-x-2
+            text-muted-foreground
+         ">
+             {/*création du pied de page */}
+             <Button variant="ghost" size="sm" >
+                 Politique de Confidentialité
+             </Button>
+             <Button variant="ghost" size="sm" >
+                termes & Conditions
+             </Button>
+         </div>
      </div>
     )
 }
