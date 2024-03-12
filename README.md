@@ -50,4 +50,4 @@ la structure du code se comporte comme suit:
 
 # App/layout contient les fichier descriptif du site en question en passant par le nom, description et autre
 
--/@ dans le code mode-toggle il est question d'affiché le boutton paramètre qui va permettre de changé le mode de la page
+-/@ dans le code mode-toggle il est question d'affiché le boutton paramètre qui va permettre de changé le mode de la page"(shadcn/ui (est le site sur laquelle je suis partie prendre le mode))"

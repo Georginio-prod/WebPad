@@ -8,7 +8,7 @@ export const Heading = () => {
     return(
         <div className="max-w-3xl space-x-4">
             <h1 className="text-3xl sm:text-5xl md:text-6xl">
-                Vos idées, documents et plans. Unifié. Bienvenue à
+                Rédigez vos idées, documents et plans unifié. Bienvenue sur
                 <span className="underline"> WebPad</span>
             </h1>
             <h3 className="
@@ -22,10 +22,12 @@ export const Heading = () => {
             </h3>
 
 
-            <Button>
-                Let's go
-                <ArrowRight className="h-4 w-4 ml-2"/>
-            </Button>
+                <Button>
+                    Let's go
+                    <ArrowRight className="h-4 w-4 ml-2"/>
+                </Button>
+
+
         </div>
     )
 }
