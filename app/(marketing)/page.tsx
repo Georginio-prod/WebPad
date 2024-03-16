@@ -2,6 +2,7 @@ import React from "react";
 import {Heading} from "@/app/(marketing)/_components/Heading";
 import Heroes from "@/app/(marketing)/_components/Heroes";
 import {Footer} from "@/app/(marketing)/_components/Footer";
+import Navbar from "@/app/(marketing)/_components/navbar";
 
 // page mère
 const MarketingPage = () => {
@@ -23,6 +24,7 @@ const MarketingPage = () => {
                 <Heading/>
                 <Heroes/>
                 <Footer/>
+                <Navbar/>
             </div>
         </div>
     )
