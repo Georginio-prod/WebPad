@@ -1,35 +1,31 @@
-'use client';
-import React, {useCallback, useState} from "react";
-import {useAmp} from "next/amp";
-import {FieldValues, SubmitHandler, useForm} from "react-hook-form";
+import React, { useCallback, useState } from "react";
+import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import Input from "@/app/components/input/Input";
 import Button from "@/app/components/Button";
 import AuthSocial from "@/app/(marketing)/(site)/component/AuthSocial";
 
-import {BsGithub, BsGoogle} from "react-icons/bs";
-
+import { BsGithub, BsGoogle } from "react-icons/bs";
+import {useRouter} from "next/navigation";
 
 type Variant = 'LOGIN ' | 'REGISTER';
+
 const AuthFrom = () => {
-    const [variant , setVariant] = useState<Variant>('LOGIN ');
+    const [variant, setVariant] = useState<Variant>('LOGIN ');
     const [isLoading, setIsLoading] = useState(false);
+    const route = useRouter();//je dois le sup après
 
     const toggleVariant = useCallback(() => {
-        if(variant === 'LOGIN '){
+        if (variant === 'LOGIN ') {
             setVariant('REGISTER');
-        }else {
+        } else {
             setVariant('LOGIN ');
         }
     }, [variant]);
 
-
-
     const {
         register,
         handleSubmit,
-        formState: {
-            errors
-        }
+        formState: { errors }
     } = useForm<FieldValues>({
         defaultValues: {
             name: '',
@@ -41,10 +37,10 @@ const AuthFrom = () => {
     const onSubmit: SubmitHandler<FieldValues> = (data) => {
         setIsLoading(true);
 
-        if(variant ==='REGISTER'){
+        if (variant === 'REGISTER') {
             //créer une première action
         }
-        if(variant=== 'LOGIN '){
+        if (variant === 'LOGIN ') {
             //connexion a la base de donné
         }
     }
@@ -54,6 +50,7 @@ const AuthFrom = () => {
 
         //connexion aves les compte
     }
+
     return (
         <div
             className="
@@ -62,6 +59,7 @@ const AuthFrom = () => {
                 sm:w-full
                 sm:max-w-md
             "
+            style={{ backgroundColor: '#FFFFFF' }} // Remplacez '#FFFFFF' par la couleur souhaitée
         >
             <div
                 className="
@@ -71,7 +69,6 @@ const AuthFrom = () => {
                     shadow
                     sm:rounded-lg
                     sm:px-10
-
                 "
             >
 
@@ -80,13 +77,13 @@ const AuthFrom = () => {
                     onSubmit={handleSubmit(onSubmit)}
                 >
                     {variant === 'REGISTER' && (
-                    <Input
-                        id="name"
-                        label="Name"
-                        register={register}
-                        errors={errors}
-                        disabled={isLoading}
-                    />
+                        <Input
+                            id="name"
+                            label="Name"
+                            register={register}
+                            errors={errors}
+                            disabled={isLoading}
+                        />
                     )}
                     <Input
                         id="email"
@@ -106,59 +103,67 @@ const AuthFrom = () => {
 
                     <div>
                         <Button
-                            disabled = {isLoading}
+                            disabled={isLoading}
                             fullWidth
-                            type= "submit"
+                            type="submit"
                         >
-                            {variant === 'LOGIN '? 'Sign in ': 'Register'}
+                            {variant === 'LOGIN ' ? 'Sign in ' : 'Register'}
                         </Button>
                     </div>
                 </form>
+                {/*pour afficher le texte */}
                 <div className="mt-6">
-                    <div className="
-                        absolute
-                        inset-0
-                        flex
-                        items-center
-                    ">
+                    <div className="relative">
+                        <div
+                            className="
+                                absolute
+                                inset-0
+                                flex
+                                items-center
+                            ">
+
+                            <div
+                                className="
+                                    w-full
+                                    border-t
+                                    border-gray-300
+                                "
+                            />
+                        </div>
                         <div className="
-                            w-full
-                            border-t
-                            border-gray-300
-                        "/>
-
-                    </div>
-                    <div className="
-                        relative
-                        flex
-                        justify-center
-                        text-sm
-                    ">
-                        <span className="
-                            bg-white
-                            px-2
-                            text-gray-500
+                            relative
+                            flex
+                            justify-center
+                            text-sm
                         ">
-                            Or continue with
+                            <span className="
+                                bg-white
+                                px-2
+                                text-gray-500
+                            ">
+                                Ou continue avec
 
-                        </span>
+                            </span>
+
+                        </div>
 
                     </div>
 
                 </div>
 
                 <div className="mt-6 flex gap-2">
+                    {/* socialAction('github') code que je doit normalement utiliser */}
                     <AuthSocial
                         icon={BsGithub}
-                        onClick={()=> socialAction('github')}
+                        onClick={() => route.push("/document") }
+
+
                     />
                     <AuthSocial
                         icon={BsGoogle}
-                        onClick={()=> socialAction('google')}
+                        onClick={() => socialAction('google')}
                     />
-
                 </div>
-
             </div>
 
             <div className="
@@ -171,21 +176,15 @@ const AuthFrom = () => {
                 text-gray-500
             ">
                 <div>
-                    {variant === 'LOGIN '? 'New to Messenger?': 'Already have an account?'}
+                    {variant === 'LOGIN ' ? 'Nouveau sur WebPad?' : 'Vous avez déjà un compte?'}
                 </div>
                 <div
                     onClick={toggleVariant}
                     className="underline cursor-pointer"
                 >
-                    {variant === 'LOGIN '? 'Create an account': 'login'}
-
+                    {variant === 'LOGIN ' ? 'Créer un compte' : 'login'}
                 </div>
-
             </div>
-            <div>
-
-            </div>
-
         </div>
     )
 }

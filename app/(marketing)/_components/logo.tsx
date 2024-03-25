@@ -1,7 +1,10 @@
+"use client";
+
 import Image from "next/image";
 import { Poppins } from "next/font/google";
 
 import { cn } from "@/lib/utils";
+import {useRouter} from "next/navigation";
 
 const font = Poppins({
     subsets: ["latin"],
@@ -9,9 +12,14 @@ const font = Poppins({
 })
 
 export const Logo = () => {
+    const route = useRouter();
     return(
         <div className="hidden md:flex items-center gap-x-2">
+
             <Image
+                onClick={() => {
+                    route.push("/Accueil")
+                }}
                 src="/note.png"
                 alt="Logo"
                 height="40"
@@ -20,6 +28,9 @@ export const Logo = () => {
             />
 
             <Image
+                onClick={() => {
+                    route.push("/Accueil")
+                }}
                 src="/noteD.png"
                 alt="Logo"
                 height="40"
