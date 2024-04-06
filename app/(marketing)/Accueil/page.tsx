@@ -24,6 +24,7 @@ const MarketingPage = () => {
                 <Heading/>
                 <Heroes/>
                 <Footer/>
+                <Navbar/>
 
             </div>
         </div>

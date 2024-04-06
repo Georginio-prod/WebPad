@@ -11,7 +11,7 @@ export default function  Home(){
                     text-3xl
                     font-bold
                     tracking-tight
-                    text-blue-600
+                    text-black
                 ">
                     Connectez-vous à votre compte
 
